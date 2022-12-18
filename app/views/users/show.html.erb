@@ -4,5 +4,5 @@
 <% @user_events.each do |event| %>
   <%= event.title %>
   <%= event.description %>
-  <%= current_user.username %>
+  <%= event.creator.username %>
 <% end %>
