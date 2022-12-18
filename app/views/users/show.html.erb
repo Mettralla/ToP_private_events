@@ -1,0 +1,8 @@
+<h1>Profile</h1>
+<p>Events created by current user:</p>
+
+<% @user_events.each do |event| %>
+  <%= event.title %>
+  <%= event.description %>
+  <%= current_user.username %>
+<% end %>
