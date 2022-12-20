@@ -1,6 +1,13 @@
 <h1>Events</h1>
 
 <% @events.each do |event| %>
-  <%= event.title %>
-  <%= event.description %>
+  <div>Title: <%= event.title %></div>
+  <div>Description: <%= event.description %></div>
+  <div>Date: <%= event.date.strftime('%d/%m/%Y') %></div>
+  <div>Hour: <%= event.date.strftime('%H:%M') %></div>
+  <div>Location: <%= event.location %></div>
+  <div>Creator: <%= event.creator.username %></div>
+  <br>
 <% end %>
+
+<%= link_to "New event", new_event_path %>
