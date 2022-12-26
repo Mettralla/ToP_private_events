@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create new]
+  before_action :authenticate_user!, only: %i[create new destroy update edit]
 
   def index
     @events = Event.all
@@ -23,6 +23,32 @@ class EventsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      flash[:success] = "Object was successfully updated"
+      redirect_to root_path
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      flash[:success] = "Object was successfully updated"
+    else
+      flash[:error] = "Something went wrong"
+    end
+    redirect_to root_path
+  end
+  
 
   private
 
