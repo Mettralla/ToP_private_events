@@ -1,0 +1,42 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-btn {
+  margin-right: 1vh;
+}
+
+.nav-inline-group {
+  display: flex;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+h3 {
+  margin-left: 1em;
+}
+
+.panel-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: .5em;
+}
+
+.card-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  justify-items: center;
+}
+
+.center-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

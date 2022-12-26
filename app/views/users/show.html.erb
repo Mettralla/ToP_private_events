@@ -1,8 +1,20 @@
-<h1>Profile</h1>
-<p>Events created by current user:</p>
+<div class="main-container">
+  <%= render 'partials/shared/navbar' %>
 
-<% @user_events.each do |event| %>
-  <%= event.title %>
-  <%= event.description %>
-  <%= event.date %>
-<% end %>
+  <div class="container-fluid">
+  <h1>My Profile</h1>
+  
+  <div class="row">
+    <h3>Upcoming Events:</h3>
+    <div class="panel-group cards">
+      <%= render 'partials/users/attendee_upcoming_events' %>
+    </div>
+    
+  <div class="row">
+    <h3>Past Events:</h3>
+      <div class="panel-group cards">
+      <%= render 'partials/users/attendee_past_events' %>
+      </div>
+    </div>
+  </div>
+</div>

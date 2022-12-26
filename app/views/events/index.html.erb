@@ -1,19 +1,22 @@
-<h1>Events</h1>
+<div class="main-container">
+  <%= render 'partials/shared/navbar' %>
 
-<% @events.each do |event| %>
-  <div>Title: <%= event.title %></div>
-  <div>Description: <%= event.description %></div>
-  <div>Date: <%= event.date.strftime('%d/%m/%Y') %></div>
-  <div>Hour: <%= event.date.strftime('%H:%M') %></div>
-  <div>Location: <%= event.location %></div>
-  <div>Creator: <%= event.creator.username %></div> <br>
-
-  <% if current_user && event.creator != current_user && !event.attendees.include?(current_user)  %>
-    <%= button_to "Attend event", enrollments_path(user_id: current_user.id, id: event.id), method: :post %>
-  <% else %>
-    <div>You have registered for the event</div>
-  <% end %>
-  <br>
-<% end %>
-
-<%= link_to "New event", new_event_path %>
+  <div class="container-fluid">
+    <h1>Events</h1>
+    
+    <div class="row">
+      <h3>Upcoming Events</h3>
+      <div class="panel-group cards">
+        <%= render 'partials/events/future_events' %>
+      </div>
+    </div>
+    
+    <div class="row">
+      <h3>Past Events</h3>
+      <div class="panel-group cards">
+        <%= render 'partials/events/past_events' %>
+      </div>
+    </div>
+    
+  </div>
+</div>

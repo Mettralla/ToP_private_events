@@ -1,0 +1,14 @@
+<nav class="navbar navbar-dark bg-dark navbar-static-top" style="background-color: #212529">
+    <div class="navbar-inner">
+      <%= link_to "Private Event", root_path, class: 'navbar-brand', style: 'color: white' %>
+      <ul class="nav pull-right nav-inline-group">
+          <%= link_to "New Event", new_event_path, class: 'btn btn-primary btn-sm navbar-btn' %>
+          <% if user_signed_in? %>
+            <%= link_to "My Profile", user_path(current_user.id), class: 'btn btn-primary btn-sm navbar-btn' %>
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-sm navbar-btn' %>
+          <% else %>
+              <%= button_to "Log In", new_user_session_path, method: :get, class: 'btn btn-primary btn-sm navbar-btn' %>
+          <% end %>
+      </ul>
+    </div>
+  </nav>

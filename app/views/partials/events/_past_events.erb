@@ -1,0 +1,21 @@
+<% @events.in_the_past.each do |event| %>
+  <div class="panel panel-primary text-center" style="width: 24rem;">
+    <div class="panel-heading">
+      <h5 class="panel-heading panel-title"><%= event.title %></h5>
+    </div>
+    <div class="panel-body"><%= event.description %></div>
+    <ul class="list-group">
+      <li class="list-group-item"><%= event.date.strftime('%d/%m/%Y %H:%M') %></li>
+      <li class="list-group-item">Location: <%= event.location %></li>
+      <li class="list-group-item">Attendees: <%= event.attendees.count %></li>
+    </ul>
+    <div class="panel-footer">
+    <%# <%= button_to "Show event", event_path(id: event.id), method: :get, class: "btn btn-primary" %> 
+    <% if current_user && event.creator != current_user && !event.attendees.include?(current_user) && event.date > Time.now  %>
+    <%= button_to "Attend event", enrollments_path(user_id: current_user.id, id: event.id), method: :post, class: "btn btn-primary" %>
+    <% else %>
+      <%= button_to "Attend event", enrollments_path, class: "btn btn-primary disabled" %>
+    <% end %>
+    </div>
+  </div>
+<% end %>

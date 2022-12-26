@@ -1,0 +1,21 @@
+<div class="main-container">
+<%= render 'partials/shared/navbar' %>
+<div>Title: <%= @event.title %></div>
+<div>Description: <%= @event.description %></div>
+<div>Date: <%= @event.date.strftime('%d/%m/%Y %H:%M') %></div>
+<div>Location: <%= @event.location %></div>
+<div>Attendees: <%= @event.attendees.count %></div>
+<div>Creator: <%= @event.creator.username %></div> 
+
+<% if current_user && @event.creator != current_user && !@event.attendees.include?(current_user) && @event.date > Time.now  %>
+  <%= button_to "Attend event", enrollments_path(user_id: current_user.id, id: @event.id), method: :post, class: "btn btn-primary" %>
+<% else %>
+  <% if current_user == @event.creator %>
+    <div>You have created this event</div>
+  <% elsif @event.date < Time.now %>
+    <div>This event already happened</div>
+  <% else %>
+    <div>You have registered for the event</div>
+  <% end %>
+<% end %>
+</div>
