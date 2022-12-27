@@ -8,6 +8,7 @@
       <li class="list-group-item"><%= event.date.strftime('%d/%m/%Y %H:%M') %></li>
       <li class="list-group-item">Location: <%= event.location %></li>
       <li class="list-group-item">Attendees: <%= event.attendees.count %></li>
+      <li class="list-group-item">Host: <%= event.creator.username %></li>
     </ul>
     <div class="panel-footer">
     <% if current_user && event.creator != current_user && !event.attendees.include?(current_user) && event.date > Time.now  %>
@@ -16,7 +17,7 @@
       <%= link_to "Edit Event", edit_event_path(id: event.id), method: :get, class: "btn btn-primary" %>
       <%= button_to "Delete Event", event_path(event.id), method: :delete, class: "btn btn-danger" %>
     <% else %>
-      <%= button_to "Attend event", enrollments_path, class: "btn btn-primary disabled" %>
+      <%= button_to "Dont Attend", enrollment_path(event.id), method: :delete, class: "btn btn-danger" %>
     <% end %>
     </div>
   </div>

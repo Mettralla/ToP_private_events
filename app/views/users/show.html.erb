@@ -4,14 +4,23 @@
   <div class="container-fluid">
   <h1>My Profile</h1>
   
+  <h2>Hosted:</h2>
+
   <div class="row">
-    <h3>Upcoming Events:</h3>
+    <div class="panel-group cards">
+      <%= render 'partials/users/events_created' %>
+    </div>
+
+  <h2>Attended:</h2>
+
+  <div class="row">
+    <h3 class="text-center">Upcoming</h3>
     <div class="panel-group cards">
       <%= render 'partials/users/attendee_upcoming_events' %>
     </div>
     
   <div class="row">
-    <h3>Past Events:</h3>
+    <h3 class="text-center">Past</h3>
       <div class="panel-group cards">
       <%= render 'partials/users/attendee_past_events' %>
       </div>

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[show]
   resources :events
-  resources :enrollments, only: %i[new create]
+  resources :enrollments, only: %i[new create destroy]
 end
